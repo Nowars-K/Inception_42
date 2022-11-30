@@ -15,7 +15,8 @@ services:
     image: wordpress
     volumes: 
       - /wp:/var/www/html
-    depends_on: mariadb
+    depends_on:
+      - mariadb
     env_file:
       - .env
     networks:
