@@ -13,7 +13,8 @@ services:
 
   worpress:
     image: wordpress
-    volumes: /wp:/var/www/html
+    volumes: 
+      - /wp:/var/www/html
     depends_on: mariadb
     env_files:
       - .env
