@@ -1,0 +1,63 @@
+version: "3.5"
+
+services:
+  mariadb:
+    image: mariadb
+    volumes:
+      - /db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD: mysql_root_pass
+      - MYSQL_DATABASE: db_name
+      - MYSQL_USER: user_name
+      - MYSQL_PASSWORD: user_pass
+    networks:
+      - inception_network
+    restart: always
+
+  worpress:
+    image: wordpress
+    volumes: /wp:/var/www/html
+    depends_on: mariadb
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      MYSQL_ROOT_PASSWORD: mysql_root_pass
+      WORDPRESS_DB_NAME: db_name
+      WORDPRESS_DB_USER: user_name
+      WORDPRESS_DB_PASSWORD: user_pass
+      WORDPRESS_TABLE_PREFIX: wp_
+    networks:
+      - inception_network
+    restart: always
+
+  nginx:
+    image: nginx
+    port:
+      - "443:443"
+          depends_on:
+      - wordpress
+    volumes:
+      - wp:/var/www/html
+    networks:
+      - inception_network
+    restart: always
+
+networks:
+  inception_network:
+    name: inception_network
+    driver: bridge
+
+volumes:
+  wp:
+    driver: local
+    name: wp
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/aleferra/data/wordpress
+  db:
+    driver: local
+    name: db
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/aleferra/data/mariadb
