@@ -6,7 +6,7 @@ RUN apt-get update \
 EXPOSE 3306
 
 COPY ./mariadb.conf /etc/mysql/mariadb.conf.d/
-COPY init_db.sql /var/www/
+COPY ./init_db.sql /var/www/
 
 RUN service mysql start && mysql < /var/www/init_db.sql && rm -f /var/www/init_db.sql;
 
