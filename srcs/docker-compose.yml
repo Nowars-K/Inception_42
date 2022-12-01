@@ -15,7 +15,6 @@ services:
         WP_ROOT_USERNAME: SuperUser
         WP_ROOT_PASSWORD: SuperPassword123!
         WP_USER_PASSWORD: Motdepasse123
-
     environment: 
       - ./.env
     networks:
@@ -27,7 +26,16 @@ services:
     container_name: wordpress
     image: wordpress
     restart: always
-    build: ./requierements/wordpress
+    build:
+      context: ./requierements/wordpress
+      args:
+        DB_ROOT_PASSWORD: ROOTPASSWORD
+        DB_USERNAME: wpuser
+        DB_PASSWORD: wppassword
+        DB_DATABASE: wp_database
+        WP_ROOT_USERNAME: SuperUser
+        WP_ROOT_PASSWORD: SuperPassword123!
+        WP_USER_PASSWORD: Motdepasse123
     environment: 
       - ./.env
     depends_on:
