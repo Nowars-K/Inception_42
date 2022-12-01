@@ -17,3 +17,4 @@ COPY /srcs/mariadb-server.cnf /etc/mysql/mariadb.conf.d/
 RUN chown -R mysql:mysql /var/lib/mysql \
 && chmod 775 /var/lib/*
 
+ENTRYPOINT [ "bash", "start.sh" ]
