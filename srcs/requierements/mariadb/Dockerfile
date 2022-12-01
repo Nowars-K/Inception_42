@@ -1,13 +1,18 @@
 FROM debian:buster
 
-#Updating packages
-RUN apt-get update
+RUN apt-get update -y \
+	&& apt-get install -y mariadb-server
 
-#Install mariadb 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apt-utils mariadb-server mariadb-client
+COPY srcs/ /
 
-#Copy configuration files
-COPY /srcs/db.sql /etc/mysql/
-COPY /srcs/setup.sh /
+ARG DB_ROOT_PASSWORD
+ARG DB_USERNAME
+ARG DB_PASSWORD
+ARG DB_DATABASE
+ARG WP_ROOT_USERNAME
+ARG WP_ROOT_PASSWORD
+ARG WP_USER_PASSWORD
 
-CMD bash setup.sh
+RUN sh mariadb_setup.sh
+
+ENTRYPOINT [ "mysqld" ]
