@@ -5,11 +5,16 @@ RUN apt-get update -y \
 
 COPY srcs/ /
 
-ARG ARG1
 ARG DB_ROOT_PASSWORD
+ARG DB_USERNAME
+ARG DB_PASSWORD
+ARG DB_DATABASE
 
-RUN echo value ${ARG1}
 RUN echo value ${DB_ROOT_PASSWORD}
+RUN echo value ${DB_USERNAME}
+RUN echo value ${DB_PASSWORD}
+RUN echo value ${DB_DATABASE}
+
 
 RUN sh mariadb_setup.sh
 
