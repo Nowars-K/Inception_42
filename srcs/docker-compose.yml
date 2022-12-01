@@ -10,7 +10,7 @@ services:
     build: 
       context: requierements/mariadb
       args:
-        - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+        - DB_ROOT_PASSWORD=ROOTPASSWORD
     networks:
       - inception
     volumes:
