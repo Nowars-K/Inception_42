@@ -1,20 +1,19 @@
-NAME=inception
+ifeq (,$(shell grep amonteli /etc/hosts))
+_ := $(shell sudo bash -c '/bin/echo "127.0.0.1 aleferra.42.fr" >> /etc/hosts')
+endif
 
-all:
-	@mkdir -p /home/aleferra/data/db
-	@docker-compose -f srcs/docker-compose.yml up --build -d
+SRC=srcs/docker-compose.yml
 
-down:
-	@docker-compose -f srcs/docker-compose.yml down
+COMMAND=docker-compose
 
-clean: down 
-	@docker system prune -f
+all: run
 
-fclean: down
-	@docker volume srcs_nginx
-	@docker rmi srcs_mariadb
-	@docker system prune -f
+run:
+	mkdir -p /home/aleferra/docker/data/database
+	mkdir -p /home/aleferra/docker/data/wordpress
+	$(COMMAND) -f $(SRC) up --build
 
-re: clean all
-
-.PHONY: all re clean fclean down
+fclean:
+	$(COMMAND) -f $(SRC) down --rmi all -v
+	rm -rf /home/amonteli/docker/data/wordpress
+	rm -rf /home/amonteli/docker/data/database

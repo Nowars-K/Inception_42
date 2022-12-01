@@ -1,63 +1,65 @@
-version: "3.5"
-
+version: "3.7"
 services:
-  mariadb:
-    image: mariadb
-    container_name: mariadb
-    build: requierements/mariadb
-    volumes:
-      - /db:/var/lib/mysql
-    env_file:
-      - .env
-    networks:
-      - inception_network
-    restart: always
 
-  wordpress:
-    image: wordpress
-    container_name: wordpress
-    build: requierements/wordpress
-    volumes: 
-      - /wp:/var/www/html
-    depends_on:
-      - mariadb
-    env_file:
-      - .env
-    networks:
-      - inception_network
+  mariadb:
+    container_name: mariadb
+    image: "mariadb"
     restart: always
+    build:
+      context: mariadb
+      args:
+        - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+        - DB_USERNAME=${DB_USERNAME}
+        - DB_PASSWORD=${DB_PASSWORD}
+        - DB_DATABASE=${DB_DATABASE}
+        - WP_ROOT_USERNAME=${WP_ROOT_USERNAME}
+        - WP_ROOT_PASSWORD=${WP_ROOT_PASSWORD}
+        - WP_USER_PASSWORD=${WP_USER_PASSWORD}
+    networks:
+      - inception
+    volumes:
+      - "database_vol:/var/lib/mysql"
 
   nginx:
-    image: nginx
     container_name: nginx
-    build: requierements/nginx
+    image: nginx
+    restart: always
+    build: nginx
+    volumes:
+      - wordpress_vol:/var/www/app
     ports:
       - "443:443"
-    depends_on:
-      - wordpress
-    volumes:
-      - wp:/var/www/html
     networks:
-      - inception_network
-    restart: always
+      - inception
 
-networks:
-  inception_network:
-    name: inception_network
-    driver: bridge
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    restart: always
+    build:
+      context: wordpress
+      args:
+        - DB_USERNAME=${DB_USERNAME}
+        - DB_PASSWORD=${DB_PASSWORD}
+        - DB_DATABASE=${DB_DATABASE}
+    volumes:
+      - wordpress_vol:/var/www/app
+    networks:
+      - inception
 
 volumes:
-  wp:
+  wordpress_vol:
     driver: local
-    name: wp
     driver_opts:
       type: none
+      device: /home/aleferra/docker/data/wordpress
       o: bind
-      device: /home/aleferra/data/wordpress
-  db:
+  database_vol:
     driver: local
-    name: db
     driver_opts:
       type: none
+      device: /home/aleferra/docker/data/database
       o: bind
-      device: /home/aleferra/data/mariadb
+
+networks:
+  inception:
