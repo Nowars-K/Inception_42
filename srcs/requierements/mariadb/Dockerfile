@@ -5,7 +5,7 @@ RUN apt-get update -y \
 
 COPY srcs/ /
 
-ARG ARG1
+ARG ARG1=test
 
 RUN echo value ${ARG1}
 
