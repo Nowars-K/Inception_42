@@ -13,12 +13,6 @@ ARG WP_ROOT_USERNAME
 ARG WP_ROOT_PASSWORD
 ARG WP_USER_PASSWORD
 
-RUN echo value ${DB_ROOT_PASSWORD}
-RUN echo value ${DB_USERNAME}
-RUN echo value ${DB_PASSWORD}
-RUN echo value ${DB_DATABASE}
-
-
 RUN sh mariadb_setup.sh
 
 ENTRYPOINT [ "mysqld" ]
