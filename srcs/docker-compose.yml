@@ -3,18 +3,10 @@ services:
 
   mariadb:
     container_name: mariadb
-    image: "mariadb"
+    image: mariadb
     restart: always
-    build:
-      context: mariadb
-      args:
-        - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-        - DB_USERNAME=${DB_USERNAME}
-        - DB_PASSWORD=${DB_PASSWORD}
-        - DB_DATABASE=${DB_DATABASE}
-        - WP_ROOT_USERNAME=${WP_ROOT_USERNAME}
-        - WP_ROOT_PASSWORD=${WP_ROOT_PASSWORD}
-        - WP_USER_PASSWORD=${WP_USER_PASSWORD}
+    build: requierements/mariadb
+    env_file: .env
     networks:
       - inception
     volumes:
@@ -24,9 +16,9 @@ services:
     container_name: nginx
     image: nginx
     restart: always
-    build: nginx
+    build: requierements/nginx
     volumes:
-      - wordpress_vol:/var/www/app
+      - wordpress_vol:/var/www/
     ports:
       - "443:443"
     networks:
@@ -35,17 +27,13 @@ services:
   wordpress:
     container_name: wordpress
     image: wordpress
-    restart: always
-    build:
-      context: wordpress
-      args:
-        - DB_USERNAME=${DB_USERNAME}
-        - DB_PASSWORD=${DB_PASSWORD}
-        - DB_DATABASE=${DB_DATABASE}
+    build: ./requierements/wordpress
+    env_file: .env
     volumes:
-      - wordpress_vol:/var/www/app
+      - wordpress_vol:/var/www/
     networks:
       - inception
+    restart: always
 
 volumes:
   wordpress_vol:
@@ -63,3 +51,4 @@ volumes:
 
 networks:
   inception:
+    driver: bridge
