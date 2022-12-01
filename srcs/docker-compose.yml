@@ -17,7 +17,7 @@ services:
     image: wordpress
     restart: always
     build: ./requierements/wordpress
-    env_file: .env
+    environnement: .env
     depends_on:
       - mariadb
     volumes:
