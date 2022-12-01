@@ -10,4 +10,4 @@ mysqladmin -u root -p$DB_ROOT_PASSWORD shutdown
 
 while nc -vz localhost 3306; do sleep 1; done
 
-exec /usr/sbin/mysqld
+# exec /usr/sbin/mysqld
