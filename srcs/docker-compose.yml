@@ -5,7 +5,10 @@ services:
     container_name: mariadb
     image: mariadb
     restart: always
-    build: requierements/mariadb
+    build: 
+      context: requierements/mariadb
+      args:
+        - - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
     environment: 
       - ./.env
     networks:
