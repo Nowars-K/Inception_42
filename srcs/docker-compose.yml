@@ -6,7 +6,8 @@ services:
     image: mariadb
     restart: always
     build: requierements/mariadb
-    env_file: .env
+    env_file: 
+      - .env
     networks:
       - inception
     volumes:
@@ -17,7 +18,8 @@ services:
     image: wordpress
     restart: always
     build: ./requierements/wordpress
-    environnement: .env
+    environnement: 
+      - .env
     depends_on:
       - mariadb
     volumes:
