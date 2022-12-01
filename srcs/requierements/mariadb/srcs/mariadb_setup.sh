@@ -1,5 +1,4 @@
 #!/bin/bash
-
 mv /my.cnf /etc/mysql/
 /etc/init.d/mysql start
 
