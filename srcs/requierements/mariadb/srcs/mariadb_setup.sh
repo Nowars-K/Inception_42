@@ -4,7 +4,7 @@ mv /my.cnf /etc/mysql/
 /etc/init.d/mysql start
 
 mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password;"
-mysql -u root -e "ALTER USER root@localhost IDENTIFIED BY '$ROOTPASSWORD';"
+mysql -u root -e "ALTER USER root@localhost IDENTIFIED BY "PASS" ;"
 
 mysql -u root -p${ROOTPASSWORD} -e "CREATE DATABASE $DB_DATABASE"
 mysql -u root -p${ROOTPASSWORD} -e "CREATE USER '$DB_USERNAME' IDENTIFIED BY '$DB_PASSWORD'"
