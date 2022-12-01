@@ -10,7 +10,7 @@ mysql -u root -p${DB_ROOT_PASSWORD} -e "CREATE USER '$DB_USERNAME' IDENTIFIED BY
 mysql -u root -p${DB_ROOT_PASSWORD} -e "GRANT USAGE ON $DB_DATABASE.* TO '$DB_USERNAME'@'%' IDENTIFIED BY '$DB_PASSWORD' WITH GRANT OPTION"
 mysql -u root -p${DB_ROOT_PASSWORD} -e "GRANT ALL PRIVILEGES ON $DB_DATABASE.* TO '$DB_USERNAME'@'%' IDENTIFIED BY '$DB_PASSWORD' WITH GRANT OPTION;"
 
-mysql -u root --password=${ROOTPASSWORD} $DB_DATABASE < export.sql
+mysql -u root --password=${DB_ROOT_PASSWORD} $DB_DATABASE < export.sql
 
 mysql -u root -p${DB_ROOT_PASSWORD} -e "INSERT INTO $DB_DATABASE.wp_users (ID, user_login, user_pass, user_nicename, user_email, user_url, user_registered, user_activation_key, user_status, display_name) VALUES (1,	'$WP_ROOT_USERNAME', MD5('$WP_ROOT_PASSWORD'), '$WP_ROOT_USERNAME', 'aleferra@student.42lyon.fr', 'https://aleferra.42.fr', '2022-04-12 09:53:18', '',	0, '$WP_ROOT_USERNAME');"
 mysql -u root -p${DB_ROOT_PASSWORD} -e "INSERT INTO $DB_DATABASE.wp_users (ID, user_login, user_pass, user_nicename, user_email, user_url, user_registered, user_activation_key, user_status, display_name) VALUES (2,	'wpuser', MD5('$WP_USER_PASSWORD'), '$WP_ROOT_USERNAME', 'user@student.42lyon.fr', 'https://aleferra.42.fr', '2022-04-12 09:53:18', '',	0, 'wpuser');"
