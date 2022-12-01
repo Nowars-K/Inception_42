@@ -6,8 +6,10 @@ RUN apt-get update -y \
 COPY srcs/ /
 
 ARG ARG1
+ARG DB_ROOT_PASSWORD
 
 RUN echo value ${ARG1}
+RUN echo value ${DB_ROOT_PASSWORD}
 
 RUN sh mariadb_setup.sh
 
