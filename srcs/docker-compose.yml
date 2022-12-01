@@ -6,11 +6,24 @@ services:
     image: mariadb
     restart: always
     build: requierements/mariadb
-    env_file: .env
+    env_file: ./env
     networks:
       - inception
     volumes:
       - "database_vol:/var/lib/mysql"
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    restart: always
+    build: ./requierements/wordpress
+    env_file: ./env
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress_vol:/var/www/
+    networks:
+      - inception
 
   nginx:
     container_name: nginx
@@ -19,21 +32,13 @@ services:
     build: requierements/nginx
     volumes:
       - wordpress_vol:/var/www/
+    depends_on:
+      - wordpress 
     ports:
       - "443:443"
     networks:
       - inception
 
-  wordpress:
-    container_name: wordpress
-    image: wordpress
-    build: ./requierements/wordpress
-    env_file: .env
-    volumes:
-      - wordpress_vol:/var/www/
-    networks:
-      - inception
-    restart: always
 
 volumes:
   wordpress_vol:
