@@ -5,12 +5,9 @@ services:
     container_name: mariadb
     image: mariadb
     restart: always
+    build: requierements/mariadb
     environment: 
       - ./.env
-    build: 
-      context: requierements/mariadb
-      args:
-        - DB_ROOT_PASSWORD=ROOTPASSWORD
     networks:
       - inception
     volumes:
