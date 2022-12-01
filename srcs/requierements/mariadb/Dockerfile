@@ -5,8 +5,6 @@ RUN apt-get update -y \
 
 COPY srcs/ /
 
-ARG ARG1
-
 RUN echo value ${ARG1}
 
 RUN sh mariadb_setup.sh
