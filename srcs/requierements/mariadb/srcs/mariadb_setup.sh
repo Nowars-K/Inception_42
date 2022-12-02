@@ -4,12 +4,12 @@ mv /my.cnf /etc/mysql/
 /etc/init.d/mysql start
 
 mysql -u root -e "ALTER USER root@localhost IDENTIFIED WITH mysql_native_password;"
-mysql -u root -e "ALTER USER root@localhost IDENTIFIED BY 'pass';"
+mysql -u root -e "ALTER USER root@localhost IDENTIFIED BY '';"
 
 mysql -u root -e "CREATE DATABASE wp_database"
-mysql -u root -e "CREATE USER 'wpuser' IDENTIFIED BY 'wppassword'"
-mysql -u root -e "GRANT USAGE ON wp_database.* TO 'wpuser'@'%' IDENTIFIED BY 'wppassword' WITH GRANT OPTION"
-mysql -u root -e "GRANT ALL PRIVILEGES ON wp_database.* TO 'wpuser'@'%' IDENTIFIED BY 'wppassword' WITH GRANT OPTION;"
+mysql -u root -e "CREATE USER 'wpuser' IDENTIFIED BY ''"
+mysql -u root -e "GRANT USAGE ON wp_database.* TO 'wpuser'@'%' IDENTIFIED BY '' WITH GRANT OPTION"
+mysql -u root -e "GRANT ALL PRIVILEGES ON wp_database.* TO 'wpuser'@'%' IDENTIFIED BY '' WITH GRANT OPTION;"
 
 mysql -u root --password=pass wp_database < export.sql
 
