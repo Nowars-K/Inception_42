@@ -5,7 +5,7 @@ all: run
 run:
 	mkdir -p /home/aleferra/docker/data/database
 	mkdir -p /home/aleferra/docker/data/wordpress
-	$(COMMAND) -f $(SRC) up --build
+	@docker-compose -f srcs/docker-compose.yml up --build -d
 
 fclean:
 	$(COMMAND) -f $(SRC) down --rmi all -v
