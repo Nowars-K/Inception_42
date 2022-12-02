@@ -1,5 +1,4 @@
 # !/bin/bash
-
 cat > setup.sql << EOF
 CREATE DATABASE IF NOT EXISTS wordpress;
 CREATE USER aleferra@'%' IDENTIFIED BY 'pass';
