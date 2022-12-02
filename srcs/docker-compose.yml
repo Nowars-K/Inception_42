@@ -5,7 +5,7 @@ services:
     container_name: mariadb
     image: mariadb
     restart: always
-    build: requierements/mariadb
+    build: ./requierements/mariadb
     environment: 
       - ./.env
     networks:
@@ -17,7 +17,7 @@ services:
     container_name: wordpress
     image: wordpress
     restart: always
-    context: ./requierements/wordpress
+    build: ./requierements/wordpress
     environment: 
       - ./.env
     depends_on:
