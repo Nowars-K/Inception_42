@@ -29,7 +29,7 @@ services:
     build:
       context: ./requierements/wordpress
       args:
-        DB_ROOT_PASSWORD: ROOTPASSWORD
+        DB_ROOT_PASSWORD: ''
         DB_USERNAME: wpuser
         DB_PASSWORD: wppassword
         DB_DATABASE: wp_database
