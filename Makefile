@@ -1,10 +1,4 @@
-ifeq (,$(shell grep amonteli /etc/hosts))
-_ := $(shell sudo bash -c '/bin/echo "127.0.0.1 aleferra.42.fr" >> /etc/hosts')
-endif
-
-SRC=srcs/docker-compose.yml
-
-COMMAND=docker-compose
+NAME= inception
 
 all: run
 
