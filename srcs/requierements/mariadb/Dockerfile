@@ -1,21 +1,22 @@
-
 FROM debian:buster
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get install -y mariadb-server
+RUN	apt-get update -y	\
+&&	apt-get upgrade -y	\
+&&	apt-get install -y mariadb-server
 
-COPY srcs/ /
+COPY ./conf/ .
 
-ARG ROOTPASSWORD
-ARG DB_USERNAME
-ARG DB_PASSWORD
-ARG DB_DATABASE
-ARG WP_ROOT_PASSWORD
+RUN cp ./50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-ARG WP_ROOT_USERNAME
-ARG WP_USER_PASSWORD
+RUN chmod +x ./db_setup.sh	\
+&&  chmod +x ./start.sh
 
-EXPOSE 3306
+RUN sh ./db_setup.sh \
+&&  sh ./start.sh
 
-RUN sh mariadb_setup.sh
+RUN service mysql start	\
+&&  mysql < setup.sql
 
-ENTRYPOINT [ "mysqld" ]
+EXPOSE	3306
+
+CMD ["mysqld_safe"]

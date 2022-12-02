@@ -1,20 +1,11 @@
-version: "3.3"
+version: '3.3'
 services:
 
   mariadb:
     container_name: mariadb
     image: mariadb
     restart: always
-    build: 
-      context: requierements/mariadb
-      args:
-        ROOTPASSWORD: pass
-        DB_USERNAME: wpuser
-        DB_PASSWORD: wppassword
-        DB_DATABASE: wp_database
-        WP_ROOT_USERNAME: SuperUser
-        WP_ROOT_PASSWORD: SuperPassword123!
-        WP_USER_PASSWORD: Motdepasse123
+    build: requierements/mariadb
     environment: 
       - ./.env
     networks:
