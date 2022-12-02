@@ -5,7 +5,7 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install -y mariadb-server
 
 COPY srcs/ /
 
-ARG DB_ROOT_PASSWORD
+ARG ROOTPASSWORD
 ARG DB_USERNAME
 ARG DB_PASSWORD
 ARG DB_DATABASE
