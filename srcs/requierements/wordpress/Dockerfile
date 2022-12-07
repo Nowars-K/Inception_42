@@ -2,7 +2,8 @@ FROM debian:buster
 
 RUN apt-get update -y \
 	&& apt install -y php php-fpm php-cli php7.3-mysql wget
-COPY srcs/ /
+
+COPY conf/ /
 
 RUN sh wordpress_setup.sh
 
