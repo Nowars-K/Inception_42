@@ -2,16 +2,16 @@ FROM debian:buster
 
 RUN	apt-get update -y	\
 &&	apt-get upgrade -y	\
-&&	apt-get install -y mariadb-server
+&&	apt-get install -y mariadb-server \
+&&  rm -rf /var/lib/apt/lists/* \
+&&  mkdir -p /run/mysqld \
+&&  chown -R mysql:mysql /run/mysqld \
+&&  chmod 777 /var/run/mysqld
 
-COPY ./conf/ .
+COPY ./conf/start.sh /
+COPY ./conf/my.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-RUN cp ./50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
-
-RUN chmod +x ./db_setup.sh	\
-&&  chmod +x ./start.sh
-
-RUN sh ./db_setup.sh \
+RUN chmod +x ./start.sh \
 &&  sh ./start.sh
 
 RUN service mysql start	\
