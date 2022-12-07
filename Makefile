@@ -17,7 +17,7 @@ clean: down
 	@docker volume rm srcs_database_vol
 	@docker volume rm srcs_wordpress_vol
 	@docker system prune -f
-	@rm -rf /home/aleferra/data/wordpress
-	@rm -rf /home/aleferra/data/mariadb
+	@sudo rm -rf /home/aleferra/data/wordpress
+	@sudo rm -rf /home/aleferra/data/mariadb
 
 .PHONY:	all run down clean
