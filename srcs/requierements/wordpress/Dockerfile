@@ -5,7 +5,7 @@ RUN apt-get update -y \
 
 COPY conf/ /
 
-ARG WP_USER
+ARG WP_USER=${WP_USER}
 ARG WP_PASS
 ARG WP_LOCALHOST
 ARG WP_DATANAME
