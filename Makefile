@@ -5,7 +5,7 @@ all: run
 run:
 	mkdir -p /home/aleferra/data/database
 	mkdir -p /home/aleferra/data/wordpress
-	@docker-compose -f --env-file srcs/docker-compose.yml up --build -d
+	@docker-compose -f srcs/docker-compose.yml --env-file srcs/.env up --build -d
 
 down:
 	@docker-compose -f srcs/docker-compose.yml down
