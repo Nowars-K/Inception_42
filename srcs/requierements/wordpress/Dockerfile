@@ -10,5 +10,3 @@ RUN sh wordpress_setup.sh
 EXPOSE 9000
 
 ENTRYPOINT [ "./usr/sbin/php-fpm7.3", "-F"]
-
-RUN echo $WP_USER ${WP_USER} WP_USER
