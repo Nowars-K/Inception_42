@@ -10,6 +10,8 @@ ARG WP_PASS
 ARG WP_LOCALHOST
 ARG WP_DATANAME
 
+RUN echo "Worp" $WP_USER
+
 RUN sh wordpress_setup.sh
 
 EXPOSE 9000
