@@ -18,8 +18,6 @@ services:
   wordpress:
     container_name: wordpress
     image: wordpress
-    env_file: 
-      - .env
     build:
       context: ./requierements/wordpress
       args:
@@ -27,6 +25,8 @@ services:
         - WP_PASS=${WP_PASS}
         - WP_LOCALHOST=${WP_LOCALHOST}
         - WP_DATANAME=${WP_DATANAME}
+    env_file: 
+      - .env
     restart: always
     ports:
       - "9000:9000"
