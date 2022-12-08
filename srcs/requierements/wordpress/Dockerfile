@@ -1,7 +1,7 @@
 FROM debian:buster
 
 RUN apt-get update -y \
-	&& apt install -y php php-fpm php-cli php7.3-mysql wget
+	&& apt-get install -y php php-fpm php-cli php7.3-mysql wget
 
 COPY conf/ /
 

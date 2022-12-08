@@ -16,37 +16,37 @@ services:
       - 3306:3306
     restart: always
 
-  wordpress:
-    container_name: wordpress
-    build: ./requierements/wordpress
-    image: wordpress
-    restart: always
-    ports:
-      - "9000:9000"
-    env_file:
-      - .env
-    depends_on:
-      - mariadb
-    volumes:
-      - wordpress_vol:/var/www/
-    networks:
-      - inception
+  # wordpress:
+  #   container_name: wordpress
+  #   build: ./requierements/wordpress
+  #   image: wordpress
+  #   restart: always
+  #   ports:
+  #     - "9000:9000"
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - mariadb
+  #   volumes:
+  #     - wordpress_vol:/var/www/
+  #   networks:
+  #     - inception
 
-  nginx:
-    container_name: nginx
-    image: nginx
-    restart: always
-    build: requierements/nginx
-    volumes:
-      - wordpress_vol:/var/www/
-    depends_on:
-      - wordpress
-    env_file:
-      - .env
-    ports:
-      - "443:443"
-    networks:
-      - inception
+  # nginx:
+  #   container_name: nginx
+  #   image: nginx
+  #   restart: always
+  #   build: requierements/nginx
+  #   volumes:
+  #     - wordpress_vol:/var/www/
+  #   depends_on:
+  #     - wordpress
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - "443:443"
+  #   networks:
+  #     - inception
 
 networks:
   inception:
