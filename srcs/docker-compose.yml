@@ -8,7 +8,7 @@ services:
       - 3306:3306
     image: mariadb
     restart: always
-    environment: 
+    env_files: 
       - .env
     networks:
       - inception
@@ -22,8 +22,8 @@ services:
     build: ./requierements/wordpress
     ports:
       - "9000:9000"
-    environment: 
-      - ../../.env
+    env_files: 
+      - .env
     depends_on:
       - mariadb
     volumes:
