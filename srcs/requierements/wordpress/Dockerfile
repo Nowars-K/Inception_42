@@ -10,10 +10,11 @@ ARG WP_PASS
 ARG WP_LOCALHOST
 ARG WP_DATANAME
 
-RUN echo "Worp" $WP_USER
 
 RUN sh wordpress_setup.sh
 
 EXPOSE 9000
 
 ENTRYPOINT [ "./usr/sbin/php-fpm7.3", "-F"]
+
+RUN echo "Worp" $WP_USER
