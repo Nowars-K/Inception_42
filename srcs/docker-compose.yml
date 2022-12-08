@@ -18,8 +18,14 @@ services:
   wordpress:
     container_name: wordpress
     image: wordpress
+    build:
+      context: ./requierements/wordpress
+      args:
+        - WP_USER=${WP_USER}
+        - WP_PASS=${WP_PASS}
+        - WP_LOCALHOST=${WP_LOCALHOST}
+        - WP_DATANAME=${WP_DATANAME}
     restart: always
-    build: ./requierements/wordpress
     ports:
       - "9000:9000"
     env_file: 
