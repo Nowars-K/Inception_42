@@ -20,13 +20,7 @@ services:
 
   wordpress:
     container_name: wordpress
-    build:
-      context: ./requierements/wordpress
-      args:
-      - WP_USER=aleferra
-      - WP_PASS=pass
-      - WP_LOCALHOST=mariadb
-      - WP_DATANAME=wordpress
+    build: ./requierements/wordpress
     image: wordpress
     restart: always
     ports:

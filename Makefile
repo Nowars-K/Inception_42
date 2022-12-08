@@ -1,4 +1,4 @@
-NAME= inception
+NAME=inception
 
 all: run
 
