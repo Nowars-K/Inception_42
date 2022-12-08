@@ -1,5 +1,9 @@
 version: '3.8'
 
+networks:
+  inception:
+    driver: bridge
+
 services:
   mariadb:
     build: ./requierements/mariadb
@@ -43,9 +47,6 @@ services:
     networks:
       - inception
 
-networks:
-  inception:
-    driver: bridge
 
 volumes:
   wordpress_vol:
