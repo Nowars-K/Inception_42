@@ -1,8 +1,4 @@
-NAME= inception
-
-all: run
-
-run:
+all: 
 	mkdir -p /home/aleferra/data/database
 	mkdir -p /home/aleferra/data/wordpress
 	@docker-compose -f ./srcs/docker-compose.yml -d
@@ -20,4 +16,4 @@ clean: down
 	@sudo rm -rf /home/aleferra/data/wordpress
 	@sudo rm -rf /home/aleferra/data/mariadb
 
-.PHONY:	all run down clean
+.PHONY:	all down clean
