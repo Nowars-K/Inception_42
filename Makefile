@@ -1,5 +1,3 @@
-NAME= inception
-
 all: run
 
 run:
