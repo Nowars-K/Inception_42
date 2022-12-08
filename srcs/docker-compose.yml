@@ -9,7 +9,7 @@ services:
     image: mariadb
     restart: always
     environment: 
-      - ./.env
+      - .env
     networks:
       - inception
     volumes:
@@ -23,7 +23,7 @@ services:
     ports:
       - "9000:9000"
     environment: 
-      - ./.env
+      - .env
     depends_on:
       - mariadb
     volumes:
