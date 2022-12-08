@@ -1,4 +1,8 @@
-version: '3.8'
+version: '3.3'
+
+networks:
+  inception:
+    driver: bridge
 
 services:
   mariadb:
@@ -63,7 +67,3 @@ volumes:
       type: none
       device: /home/aleferra/data/database
       o: bind
-
-networks:
-  inception:
-    driver: bridge
