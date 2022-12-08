@@ -5,11 +5,6 @@ RUN apt-get update -y \
 
 COPY conf/ /
 
-ARG WP_USER=test
-ARG WP_PASS
-ARG WP_LOCALHOST
-ARG WP_DATANAME
-
 RUN sh wordpress_setup.sh
 
 EXPOSE 9000

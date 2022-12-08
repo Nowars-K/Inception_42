@@ -8,7 +8,7 @@ services:
       - 3306:3306
     image: mariadb
     restart: always
-    env_file: 
+    env_files: 
       - .env
     networks:
       - inception
@@ -17,18 +17,12 @@ services:
 
   wordpress:
     container_name: wordpress
+    build: ./requierements/wordpress
     image: wordpress
-    build:
-      context: ./requierements/wordpress
-      args:
-        - WP_USER=${WP_USER}
-        - WP_PASS=${WP_PASS}
-        - WP_LOCALHOST=${WP_LOCALHOST}
-        - WP_DATANAME=${WP_DATANAME}
-    env_file: .env
     restart: always
     ports:
       - "9000:9000"
+    env_file: .env
     depends_on:
       - mariadb
     volumes:
