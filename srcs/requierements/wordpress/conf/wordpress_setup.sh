@@ -18,7 +18,7 @@ sleep 10;
 env > c;
 cd /var/www/app
 
-sed -i "s/username_here/'$WP_USER'/g" wp-config-sample.php
+sed -i "s/username_here/$WP_USER/g" wp-config-sample.php
 sed -i "s/password_here/pass/g" wp-config-sample.php
 sed -i "s/localhost/mariadb/g" wp-config-sample.php
 sed -i "s/database_name_here/wordpress/g" wp-config-sample.php
