@@ -5,7 +5,7 @@ rm -rf latetest.tar.gz
 mv wordpress/ /var/www/app
 
 mv fpm.cnf /etc/php/7.3/fpm/pool.d/www.conf
-sleep 1
+sleep 10
 echo $WP_USER > a;
 echo $WPUSER > b;
 echo ${WP_USER} > c;
