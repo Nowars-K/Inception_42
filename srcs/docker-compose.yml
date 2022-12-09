@@ -18,7 +18,13 @@ services:
 
   wordpress:
     container_name: wordpress
-    build: ./requierements/wordpress
+    context:
+      build: ./requierements/wordpress
+      args:
+       - WP_USER
+       - WP_PASS
+       - WP_LOCALHOST
+       - WP_DATANAME
     image: wordpress
     # depends_on:
     #   - mariadb

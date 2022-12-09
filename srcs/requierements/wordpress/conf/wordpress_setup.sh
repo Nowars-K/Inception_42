@@ -6,7 +6,6 @@ mv wordpress/ /var/www/app
 
 mv fpm.cnf /etc/php/7.3/fpm/pool.d/www.conf
 
-sleep 10;
 env
 env > a;
 echo $WPUSER > b;
@@ -14,7 +13,6 @@ echo ${WP_USER} > c;
 echo ${TERM} > d;
 echo '$WPUSER' > e;
 echo $"WP_USER" > f;
-sleep 10;
 env > c;
 cd /var/www/app
 
