@@ -4,8 +4,8 @@ RUN apt-get update -y \
 	&& apt-get install -y php php-fpm php-cli php7.3-mysql wget
 
 ARG WP_USER: 'info'
-ARG WP_PASS
-ARG WP_LOCALHOST
+ARG WP_PASS="pass"
+ARG WP_LOCALHOST pass
 
 COPY conf/ /
 
