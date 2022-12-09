@@ -6,11 +6,11 @@ mv wordpress/ /var/www/app
 
 mv fpm.cnf /etc/php/7.3/fpm/pool.d/www.conf
 echo $WP_USER > a
-echo $WPUSER > a
-echo ${WP_USER} > a
-echo ${WPUSER} > a
-echo '$WPUSER' > a
-echo "$WP_USER" > a
+echo $WPUSER > b
+echo ${WP_USER} > c
+echo ${WPUSER} > d
+echo '$WPUSER' > e
+echo $"WP_USER" > f
 cd /var/www/app
 
 sed -i "s/username_here/'$WP_USER'/g" wp-config-sample.php
