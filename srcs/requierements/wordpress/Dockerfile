@@ -12,6 +12,8 @@ COPY conf/ /
 
 RUN sh wordpress_setup.sh
 
+
+RUN cd /var/www/app
 RUN sed -i "s/username_here/$WP_USER/g" wp-config-sample.php;
 RUN sed -i "s/password_here/${WP_PASS}/g" wp-config-sample.php
 RUN sed -i "s/localhost/mariadb/g" wp-config-sample.php
