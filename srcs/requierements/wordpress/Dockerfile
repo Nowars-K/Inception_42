@@ -7,6 +7,8 @@ ARG WP_USER aleferra
 ARG WP_PASS pass
 ARG WP_LOCALHOST pass
 
+RUN echo WP_USER
+RUN sleep 5
 COPY conf/ /
 
 RUN sh wordpress_setup.sh
