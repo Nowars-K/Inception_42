@@ -21,7 +21,7 @@ services:
     build:
       context: ./requierements/wordpress
       args:
-       - WP_USER: $WP_USER
+       - WP_USER= $WP_USER
        - WP_PASS
        - WP_LOCALHOST
        - WP_DATANAME
