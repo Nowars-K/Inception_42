@@ -6,6 +6,8 @@ mv wordpress/ /var/www/app
 
 mv fpm.cnf /etc/php/7.3/fpm/pool.d/www.conf
 
+env > a;
+echo $WP_PASS > b
 
 cd /var/www/app
 
@@ -14,7 +16,5 @@ sed -i "s/password_here/${WP_PASS}/g" wp-config-sample.php
 sed -i "s/localhost/$WP_LOCALHOST/g" wp-config-sample.php
 sed -i "s/database_name_here/$WP_DATANAME/g" wp-config-sample.php
 mv wp-config-sample.php wp-config.php
-env > a;
-echo $WP_PASS > b
 
 service php7.3-fpm start

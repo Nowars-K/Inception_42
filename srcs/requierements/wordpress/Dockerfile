@@ -3,7 +3,8 @@ FROM debian:buster
 RUN apt-get update -y \
 	&& apt-get install -y php php-fpm php-cli php7.3-mysql wget
 
-ENV WP_USER=aleferra
+ENV WP_USER=${WP_USER}
+ENV WP_PASS=${WP_PASS}
 
 COPY conf/ /
 
