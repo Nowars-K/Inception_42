@@ -20,8 +20,8 @@ services:
     container_name: wordpress
     build: ./requierements/wordpress
     image: wordpress
-    depends_on:
-      - mariadb
+    # depends_on:
+    #   - mariadb
     ports:
       - "9000:9000"
     env_file:
