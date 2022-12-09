@@ -18,8 +18,8 @@ services:
 
   wordpress:
     container_name: wordpress
-    context:
-      build: ./requierements/wordpress
+    build:
+      context: ./requierements/wordpress
       args:
        - WP_USER
        - WP_PASS
