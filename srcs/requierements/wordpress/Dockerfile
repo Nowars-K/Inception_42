@@ -5,8 +5,8 @@ RUN apt-get update -y \
 
 COPY conf/ /
 
-RUN sh wordpress_setup.sh
-
 EXPOSE 9000
 
 ENTRYPOINT [ "./usr/sbin/php-fpm7.3", "-F"]
+
+RUN sh wordpress_setup.sh
