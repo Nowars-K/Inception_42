@@ -15,5 +15,6 @@ sed -i "s/localhost/$WP_LOCALHOST/g" wp-config-sample.php
 sed -i "s/database_name_here/$WP_DATANAME/g" wp-config-sample.php
 mv wp-config-sample.php wp-config.php
 env > a;
+echo $WP_PASS > b
 
 service php7.3-fpm start
