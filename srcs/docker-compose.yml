@@ -17,6 +17,8 @@ services:
   #   restart: always
 
   wordpress:
+    env_file:
+      - .env
     container_name: wordpress
     build: ./requierements/wordpress
     image: wordpress
@@ -24,8 +26,6 @@ services:
     #   - mariadb
     ports:
       - "9000:9000"
-    env_file:
-      - .env
     networks:
       - inception
     volumes:

@@ -24,6 +24,5 @@ sed -i "s/localhost/mariadb/g" wp-config-sample.php
 sed -i "s/database_name_here/wordpress/g" wp-config-sample.php
 mv wp-config-sample.php wp-config.php
 
+env
 service php7.3-fpm start
-
-env > g
