@@ -1,10 +1,10 @@
 # !/bin/bash
 cat > setup.sql << EOF
 CREATE DATABASE IF NOT EXISTS wordpress;
-CREATE USER aleferra@'%' IDENTIFIED BY 'pass';
-GRANT ALL PRIVILEGES ON wordpress.* TO aleferra@'%';
+CREATE USER ${WP_USER}@'%' IDENTIFIED BY '${WP_PASS}';
+GRANT ALL PRIVILEGES ON ${WP_DATANAME}.* TO ${WP_USER}@'%';
 FLUSH PRIVILEGES;
 
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+ALTER USER '${USER_ROOT}'@'localhost' IDENTIFIED BY '${PASS_ROOT}';
 
 EOF
