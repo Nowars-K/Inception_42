@@ -21,10 +21,10 @@ services:
     build:
       context: ./requierements/wordpress
       args:
-       - WP_USER=${WP_USER}
+       - WP_USER
        - WP_PASS
        - WP_LOCALHOST=mariadb
-       - WP_DATANAME:'data'
+       - WP_DATANAME
     image: wordpress
     # depends_on:
     #   - mariadb
