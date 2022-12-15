@@ -6,9 +6,6 @@ mv wordpress/ /var/www/app
 
 mv fpm.cnf /etc/php/7.3/fpm/pool.d/www.conf
 
-env > a;
-echo $WP_PASS > b
-
 cd /var/www/app
 
 sed -i "s/username_here/$WP_USER/g" wp-config-sample.php
